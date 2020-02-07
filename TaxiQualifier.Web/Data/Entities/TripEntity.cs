@@ -28,7 +28,7 @@ namespace TaxiQualifier.Web.Data.Entities
         [MaxLength(100, ErrorMessage = "The {0} field must have {1} characters.")]
         public string Target { get; set; }
 
-        public int Qualification { get; set; }
+        public float Qualification { get; set; }
 
         public double SourceLatitude { get; set; }
 
@@ -37,6 +37,8 @@ namespace TaxiQualifier.Web.Data.Entities
         public double TargetLatitude { get; set; }
 
         public double TargetLongitude { get; set; }
+
+        public string Remarks { get; set; }
 
         public TaxiEntity Taxi { get; set; }
 
