@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace TaxiQualifier.Web.Data.Entities
 {
@@ -10,5 +11,6 @@ namespace TaxiQualifier.Web.Data.Entities
         [Required(ErrorMessage = "The field {0} is mandatory.")]
         public string Plaque { get; set; }
 
+        public ICollection<TripEntity> Trips { get; set; }
     }
 }
