@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using TaxiQualifier.Web.Data.Entities;
 
 namespace TaxiQualifier.Web.Data
 {
-    public class DataContext : DbContext
+    public class DataContext : IdentityDbContext<UserEntity>
     {
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
@@ -15,6 +16,7 @@ namespace TaxiQualifier.Web.Data
         public DbSet<TaxiEntity> Taxis { get; set; }
         public DbSet<TripEntity> Trips { get; set; }
         public DbSet<TripDetailEntity> TripDetails { get; set; }
+        public DbSet<UserGroupEntity> UserGroups { get; set; }
 
     }
 }

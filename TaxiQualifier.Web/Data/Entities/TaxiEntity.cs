@@ -12,5 +12,6 @@ namespace TaxiQualifier.Web.Data.Entities
         public string Plaque { get; set; }
 
         public ICollection<TripEntity> Trips { get; set; }
+        public UserEntity User { get; set; }
     }
 }
