@@ -15,6 +15,9 @@ namespace TaxiQualifier.Web.Data.Entities
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd hh:mm}", ApplyFormatInEditMode = false)]
         public DateTime Date { get; set; }
 
+        [DataType(DataType.DateTime)]
+        [Display(Name = "Start Date")]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd hh:mm}", ApplyFormatInEditMode = false)]
         public DateTime DateLocal => Date.ToLocalTime();
 
         public double Latitude { get; set; }

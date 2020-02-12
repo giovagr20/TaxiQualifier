@@ -55,6 +55,16 @@ namespace TaxiQualifier.Web
             services.AddTransient<SeedDb>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddScoped<IUserHelper, UserHelper>();
+
+            /*Transient
+                Transient lifetime services (AddTransient) are created each time they're 
+                requested from the service container. This lifetime works best for lightweight, stateless services.
+             */
+
+            /*Scoped
+                Scoped lifetime services (AddScoped) are created once per client request (connection).             
+             */ 
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
