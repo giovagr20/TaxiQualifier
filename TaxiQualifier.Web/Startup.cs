@@ -52,9 +52,11 @@ namespace TaxiQualifier.Web
                 cfg.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
 
+            services.AddScoped<IUserHelper, UserHelper>();
+            services.AddScoped<IConverterHelper, ConverterHelper>();
             services.AddTransient<SeedDb>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            services.AddScoped<IUserHelper, UserHelper>();
+            
 
             /*Transient
                 Transient lifetime services (AddTransient) are created each time they're 

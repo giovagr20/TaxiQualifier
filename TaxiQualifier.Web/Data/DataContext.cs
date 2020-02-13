@@ -1,9 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using TaxiQualifier.Web.Data.Entities;
 
 namespace TaxiQualifier.Web.Data
@@ -23,11 +19,12 @@ namespace TaxiQualifier.Web.Data
                 .IsUnique();
         }
 
-
         public DbSet<TaxiEntity> Taxis { get; set; }
-        public DbSet<TripEntity> Trips { get; set; }
-        public DbSet<TripDetailEntity> TripDetails { get; set; }
-        public DbSet<UserGroupEntity> UserGroups { get; set; }
 
+        public DbSet<TripEntity> Trips { get; set; }
+
+        public DbSet<TripDetailEntity> TripDetails { get; set; }
+
+        public DbSet<UserGroupEntity> UserGroups { get; set; }
     }
 }
