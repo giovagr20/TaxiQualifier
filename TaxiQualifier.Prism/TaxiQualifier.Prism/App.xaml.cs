@@ -1,6 +1,6 @@
 ﻿using Prism;
 using Prism.Ioc;
-using TaxiQualifier.Prism.ViewModels;
+using Taxi.Prism.ViewModels;
 using TaxiQualifier.Prism.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -23,13 +23,13 @@ namespace TaxiQualifier.Prism
         {
             InitializeComponent();
 
-            await NavigationService.NavigateAsync("NavigationPage/MainPage");
+            await NavigationService.NavigateAsync("NavigationPage/HomePage");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<NavigationPage>();
-            containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
+            containerRegistry.RegisterForNavigation<HomePage, HomePageViewModel>();
         }
     }
 }

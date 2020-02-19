@@ -26,9 +26,9 @@ namespace TaxiQualifier.Web.Data
             await _dataContext.Database.EnsureCreatedAsync();
             await CheckRolesAsync();
             var admin = await CheckUserAsync("1010", "Giovanni", "Gómez Restrepo", "giovannyg32@gmail.com", "314 739 2212", "Calle Luna Calle Sol", UserType.Admin);
-            var driver = await CheckUserAsync("2020", "Giovanni", "Zuluaga", "giovannig.gomez@sqasa.co", "314 739 2212", "Calle Luna Calle Sol", UserType.Driver);
-            var user1 = await CheckUserAsync("3030", "Giovanni", "Zuluaga", "giovanni.gomez@mvm.com.co", "314 739 2212", "Calle Luna Calle Sol", UserType.User);
-            var user2 = await CheckUserAsync("4040", "Giovanni", "Zuluaga", "giovannigomez198077@correo.itm.edu.co", "314 739 2212", "Calle Luna Calle Sol", UserType.User);
+            var driver = await CheckUserAsync("2020", "Giovanni", "Gómez Restrepo", "giovannig.gomez@sqasa.co", "314 739 2212", "Calle Luna Calle Sol", UserType.Driver);
+            var user1 = await CheckUserAsync("3030", "Giovanni", "Gómez Restrepo", "giovanni.gomez@mvm.com.co", "314 739 2212", "Calle Luna Calle Sol", UserType.User);
+            var user2 = await CheckUserAsync("4040", "Giovanni", "Gómez Restrepo", "giovannigomez198077@correo.itm.edu.co", "314 739 2212", "Calle Luna Calle Sol", UserType.User);
             await CheckTaxisAsync(driver, user1, user2);
         }
 
