@@ -3,8 +3,10 @@
 	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="28" />
 	<uses-permission android:name="android.permission.INTERNET" />
 	<application android:label="TaxiQualifier.Prism.Android" android:icon="@mipmap/ic_launcher">
+    <uses-library android:name="org.apache.http.legacy"
+           android:required="false"/>
     <meta-data
     	android:name="com.google.android.maps.v2.API_KEY"
-    	android:value="AIzaSyAtxvXVhbzV9OTwZh8UxVsW2A58WYf-Btc" />
+    	android:value="AIzaSyDa0deVr9eSJvN_Tyrw3PrAE0H5uybsjZM" />
   </application>
 </manifest>

@@ -10,12 +10,12 @@ namespace TaxiQualifier.Web.Controllers
     {
         private readonly IUserHelper _userHelper;
 
-        public AccountController(IUserHelper userHelper)
+        public AccountController(IUserHelper userHelper) //constructor
         {
             _userHelper = userHelper;
         }
 
-        public IActionResult Login()
+        public IActionResult Login() //GET SINTAXIS
         {
             if (User.Identity.IsAuthenticated)
             {
@@ -26,9 +26,9 @@ namespace TaxiQualifier.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login(LoginViewModel model)
+        public async Task<IActionResult> Login(LoginViewModel model) //POST SINTAXIS
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid) //ModelState => it means the model of login accomplish requirements
             {
                 var result = await _userHelper.LoginAsync(model);
                 if (result.Succeeded)
