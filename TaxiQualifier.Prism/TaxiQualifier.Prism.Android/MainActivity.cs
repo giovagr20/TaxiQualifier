@@ -5,6 +5,7 @@ using Plugin.CurrentActivity;
 using Plugin.Permissions;
 using Prism;
 using Prism.Ioc;
+using Syncfusion.SfBusyIndicator.XForms.Droid;
 
 namespace TaxiQualifier.Prism.Droid
 {
@@ -19,7 +20,8 @@ namespace TaxiQualifier.Prism.Droid
             base.OnCreate(bundle);
 
             CrossCurrentActivity.Current.Init(this, bundle);
-            global::Xamarin.Forms.Forms.Init(this, bundle);
+            global::Xamarin.Forms.Forms.Init(this, bundle); 
+            new SfBusyIndicatorRenderer();
             Xamarin.FormsMaps.Init(this, bundle);
             LoadApplication(new App(new AndroidInitializer()));
         }
