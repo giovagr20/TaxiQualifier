@@ -6,7 +6,8 @@
              xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="TaxiQualifier.Prism.Views.TaxiHistoryPage"
-             Title="{Binding Title}">
+             Title="{Binding Title}"
+             BackgroundColor="{StaticResource ColorBackgroud}">
 
     <AbsoluteLayout>
         <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1"
@@ -19,18 +20,19 @@
                    Placeholder="Enter plaque..." 
                    Text="{Binding Plaque}"
                    VerticalOptions="Center"/>
-                <Button BackgroundColor="Navy"
-                    Command="{Binding CheckPlaqueCommand}"
-                    CornerRadius="20"
-                    HeightRequest="40"
-                    Margin="10,0"
-                    Text="Check Plaque"
-                    TextColor="White"/>
+                <Button Command="{Binding CheckPlaqueCommand}"
+                        Margin="10,0"
+                        Text="Check Plaque" />
             </StackLayout>
             <rating:SfRating HorizontalOptions="Center" 
-                             Margin="0,5"
-                             Precision="Exact"
-                             Value="{Binding Taxi.Qualification}" />
+                    IsEnabled="False"
+                    Margin="0,5"
+                    Precision="Exact"
+                    Value="{Binding Taxi.Qualification}">
+                <rating:SfRating.RatingSettings>
+                    <rating:SfRatingSettings RatedFill="{StaticResource ColorDanger}"/>
+                </rating:SfRating.RatingSettings>
+            </rating:SfRating>
             <Label FontAttributes="Bold" 
                    FontSize="Large"
                    HorizontalOptions="Center"
@@ -49,16 +51,17 @@
                 <Label Text="{Binding Taxi.User.FullName, StringFormat='{0:N0}'}"/>
             </StackLayout>
             <busyindicator:SfBusyIndicator AnimationType="SlicedCircle" 
-                                       AbsoluteLayout.LayoutBounds=".5,.5,.5,.5"
-                	                   AbsoluteLayout.LayoutFlags="All"
-                	                   BackgroundColor="LightGray"
-                	                   HorizontalOptions="Center"
-                	                   TextColor="White"
-                	                   IsVisible="{Binding IsRunning}"
-                	                   Title="Loading..."
-                	                   VerticalOptions="Center"
-                	                   ViewBoxWidth="80"
-                	                   ViewBoxHeight="80" />
+                                    AbsoluteLayout.LayoutBounds=".5,.5,.5,.5"
+                	                AbsoluteLayout.LayoutFlags="All"
+                	                BackgroundColor="{StaticResource ColorDanger}"
+                	                HorizontalOptions="Center"
+                	                TextColor="{StaticResource ColorFontInverse}"
+                	                IsVisible="{Binding IsRunning}"
+                	                Title="Loading"
+                	                VerticalOptions="Center"
+                	                ViewBoxWidth="80"
+                	                ViewBoxHeight="80" />
+
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
