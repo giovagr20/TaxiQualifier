@@ -83,7 +83,7 @@
                    Text="Remarks"/>
             </Grid>
 
-            <CollectionView ItemsSource="{Binding Taxi.Trips}">
+            <CollectionView ItemsSource="{Binding Trips}">
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout Orientation="Vertical"/>
                 </CollectionView.ItemsLayout>
@@ -96,6 +96,9 @@
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SelectTripCommand}"/>
+                            </Grid.GestureRecognizers>
                             <Label Grid.Column="0"
                                Text="{Binding StartDateLocal, StringFormat='{0:yyyy/MM/dd HH:mm}'}"
                                VerticalOptions="Center"/>
