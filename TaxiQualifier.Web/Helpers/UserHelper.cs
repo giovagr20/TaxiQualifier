@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
+using TaxiQualifier.Common.Enums;
 using TaxiQualifier.Web.Data.Entities;
 using TaxiQualifier.Web.Models;
 
@@ -67,5 +68,42 @@ namespace TaxiQualifier.Web.Helpers
         {
             return await _userManager.IsInRoleAsync(user, roleName);
         }
+
+        public async Task<UserEntity> AddUserAsync(AddUserViewModel model, string path)
+        {
+            UserEntity userEntity = new UserEntity
+            {
+                Address = model.Address,
+                Document = model.Document,
+                Email = model.Username,
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                PicturePath = path,
+                PhoneNumber = model.PhoneNumber,
+                UserName = model.Username,
+                UserType = model.UserTypeId == 1 ? UserType.Driver : UserType.User
+            };
+
+            IdentityResult result = await _userManager.CreateAsync(userEntity, model.Password);
+            if (result != IdentityResult.Success)
+            {
+                return null;
+            }
+
+            UserEntity newUser = await GetUserByEmailAsync(model.Username);
+            await AddUserToRoleAsync(newUser, userEntity.UserType.ToString());
+            return newUser;
+        }
+
+        public async Task<IdentityResult> ChangePasswordAsync(UserEntity user, string oldPassword, string newPassword)
+        {
+            return await _userManager.ChangePasswordAsync(user, oldPassword, newPassword);
+        }
+
+        public async Task<IdentityResult> UpdateUserAsync(UserEntity user)
+        {
+            return await _userManager.UpdateAsync(user);
+        }
+
     }
 }
