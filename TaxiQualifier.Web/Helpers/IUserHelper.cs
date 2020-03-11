@@ -10,7 +10,19 @@ namespace TaxiQualifier.Web.Helpers
 {
     public interface IUserHelper
     {
-        Task<UserEntity> GetUserByEmailAsync(string email);
+        Task<string> GeneratePasswordResetTokenAsync(UserEntity user);
+
+        Task<IdentityResult> ResetPasswordAsync(UserEntity user, string token, string password);
+
+        Task<string> GenerateEmailConfirmationTokenAsync(UserEntity user);
+
+        Task<IdentityResult> ConfirmEmailAsync(UserEntity user, string token);
+
+        Task<SignInResult> ValidatePasswordAsync(UserEntity user, string password);
+
+        Task<UserEntity> GetUserAsync(string email);
+
+        Task<UserEntity> GetUserAsync(Guid userId);
 
         Task<IdentityResult> AddUserAsync(UserEntity user, string password);
 

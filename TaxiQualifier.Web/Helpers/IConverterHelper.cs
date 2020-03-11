@@ -6,5 +6,8 @@ namespace TaxiQualifier.Web.Helpers
     public interface IConverterHelper
     {
         TaxiResponse ToTaxiResponse(TaxiEntity taxiEntity);
+
+        TripResponse ToTripResponse(TripEntity tripEntity);
+
     }
 }

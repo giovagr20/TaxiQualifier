@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Threading.Tasks;
 using TaxiQualifier.Common.Enums;
 using TaxiQualifier.Web.Data.Entities;
@@ -20,6 +21,31 @@ namespace TaxiQualifier.Web.Helpers
             _userManager = userManager;
             _roleManager = roleManager;
             _signInManager = signInManager;
+        }
+
+        public async Task<string> GeneratePasswordResetTokenAsync(UserEntity user)
+        {
+            return await _userManager.GeneratePasswordResetTokenAsync(user);
+        }
+
+        public async Task<IdentityResult> ResetPasswordAsync(UserEntity user, string token, string password)
+        {
+            return await _userManager.ResetPasswordAsync(user, token, password);
+        }
+
+        public async Task<IdentityResult> ConfirmEmailAsync(UserEntity user, string token)
+        {
+            return await _userManager.ConfirmEmailAsync(user, token);
+        }
+
+        public async Task<string> GenerateEmailConfirmationTokenAsync(UserEntity user)
+        {
+            return await _userManager.GenerateEmailConfirmationTokenAsync(user);
+        }
+
+        public async Task<SignInResult> ValidatePasswordAsync(UserEntity user, string password)
+        {
+            return await _signInManager.CheckPasswordSignInAsync(user, password, false);
         }
 
         public async Task<SignInResult> LoginAsync(LoginViewModel model)
@@ -59,9 +85,14 @@ namespace TaxiQualifier.Web.Helpers
             }
         }
 
-        public async Task<UserEntity> GetUserByEmailAsync(string email)
+        public async Task<UserEntity> GetUserAsync(string email)
         {
             return await _userManager.FindByEmailAsync(email);
+        }
+
+        public async Task<UserEntity> GetUserAsync(Guid userId)
+        {
+            return await _userManager.FindByIdAsync(userId.ToString());
         }
 
         public async Task<bool> IsUserInRoleAsync(UserEntity user, string roleName)
@@ -90,7 +121,7 @@ namespace TaxiQualifier.Web.Helpers
                 return null;
             }
 
-            UserEntity newUser = await GetUserByEmailAsync(model.Username);
+            UserEntity newUser = await GetUserAsync(model.Username);
             await AddUserToRoleAsync(newUser, userEntity.UserType.ToString());
             return newUser;
         }
